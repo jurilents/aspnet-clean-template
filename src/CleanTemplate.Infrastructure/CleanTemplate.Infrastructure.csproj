@@ -6,4 +6,23 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CleanTemplate.Application\CleanTemplate.Application.csproj"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Microsoft.AspNetCore.Identity, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+			<HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\6.0.0\Microsoft.AspNetCore.Identity.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MailKit" Version="3.1.0"/>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0"/>
+	</ItemGroup>
+
 </Project>

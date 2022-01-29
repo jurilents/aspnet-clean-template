@@ -1,25 +1,45 @@
-var builder = WebApplication.CreateBuilder(args);
+using CleanTemplate.WebApi.Extensions;
 
-// Add services to the container.
+namespace CleanTemplate.WebApi;
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public static class Program
 {
-	app.UseSwagger();
-	app.UseSwaggerUI();
+	public static void Main(string[] args)
+	{
+		var builder = WebApplication.CreateBuilder(args);
+		ConfigureBuilder(builder);
+
+		var app = builder.Build();
+		ConfigureWebApp(app);
+
+		app.Run();
+	}
+
+	private static void ConfigureBuilder(WebApplicationBuilder builder)
+	{
+		builder.AddDatabase();
+		builder.AddApplication();
+		builder.AddInfrastructure();
+		builder.AddWebApi();
+	}
+
+	private static void ConfigureWebApp(WebApplication app)
+	{
+		if (app.Configuration.GetSwaggerSettings().Enabled)
+		{
+			app.UseCustomSwagger();
+			app.Redirect("/", "/swagger");
+		}
+
+		if (app.Environment.IsProduction())
+		{
+			app.UseHttpsRedirection();
+		}
+
+		app.UseCustomExceptionHandler();
+
+		app.UseAuthorization();
+
+		app.MapControllers();
+	}
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
