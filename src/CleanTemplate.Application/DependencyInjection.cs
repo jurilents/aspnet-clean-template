@@ -25,6 +25,8 @@ public static class DependencyInjection
 			options.Secret = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]));
 			options.AccessTokenLifetimeMinutes = int.Parse(configuration["Jwt:AccessTokenLifetimeMinutes"]);
 		});
+
+		services.Configure<SmtpOptions>(configuration.GetSection("Smtp"));
 	}
 
 	private static void AddAppMediatR(this IServiceCollection services)

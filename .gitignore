@@ -1,3 +1,5 @@
+appsettings.Secrets.json
+
 bin/
 obj/
 /packages/
@@ -7,3 +9,6 @@ riderModule.iml
 
 .idea/
 .vs/
+
+logs/
+*.log

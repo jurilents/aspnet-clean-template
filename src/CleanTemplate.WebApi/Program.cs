@@ -7,6 +7,10 @@ public static class Program
 	public static void Main(string[] args)
 	{
 		var builder = WebApplication.CreateBuilder(args);
+
+		// TODO: put here your private info
+		builder.Configuration.AddJsonFile("appsettings.Secrets.json");
+
 		ConfigureBuilder(builder);
 
 		var app = builder.Build();

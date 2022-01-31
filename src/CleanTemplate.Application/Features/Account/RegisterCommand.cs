@@ -44,9 +44,8 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthResul
 			throw new ValidationFailedException("RegistrationFailed", result.Errors.Select(e => new Error.Details(e.Code, e.Description)));
 
 		string confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-		string confirmationLink = string.Format(_options.EmailConfirmationUrl, user.Id, confirmationToken);
 
-		await _emailSender.SendAsync(request.Email, "Confirm your email", $"Confirm: <a href=\"{confirmationLink}\">YES</a> or <i>no</i>");
+		await _emailSender.SendAsync(request.Email, "Confirm your email", $"Your code: <b>{confirmationToken}</b>");
 
 		string accessToken = await _jwtGenerator.GenerateAsync(user);
 		return new AuthResult(user.UserName, accessToken);

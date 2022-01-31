@@ -5,7 +5,6 @@ using CleanTemplate.Domain.Core.Tools;
 using CleanTemplate.Domain.Extensions;
 using CleanTemplate.Infrastructure.Core;
 using CleanTemplate.Infrastructure.Repositories;
-using CleanTemplate.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,13 +18,13 @@ public static class DependencyInjection
 		services.AddInfrastructureServices();
 		services.AddRepositories();
 	}
-	
-	
+
+
 	public static void AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
 	{
 		services.AddIdentity<AppUser, AppRole>()
 				.AddEntityFrameworkStores<AppDbContext>()
-				.AddTokenProvider("Default", typeof(EmailTwoFactorAuthentication));
+				.AddTokenProvider("Default", typeof(EmailTokenProvider<AppUser>));
 
 		services.Configure<IdentityOptions>(configuration.GetSection("Identity"));
 		services.Configure<PasswordHasherOptions>(option => option.IterationCount = 7000);
@@ -62,9 +61,6 @@ public static class DependencyInjection
 				default:
 					throw new ArgumentOutOfRangeException(nameof(attr.InjectionType), "Invalid injection type");
 			}
-
-			Type[] interfaces = implType.GetInterfaces();
-			services.Add(new ServiceDescriptor(interfaces.First(), implType, attr.Lifetime));
 		}
 	}
 

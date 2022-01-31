@@ -23,14 +23,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="appsettings.Development.json">
-	    <DependentUpon>appsettings.json</DependentUpon>
-	  </Content>
+	  <ProjectReference Include="..\CleanTemplate.Application\CleanTemplate.Application.csproj" />
+	  <ProjectReference Include="..\CleanTemplate.Infrastructure\CleanTemplate.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\CleanTemplate.Application\CleanTemplate.Application.csproj" />
-	  <ProjectReference Include="..\CleanTemplate.Infrastructure\CleanTemplate.Infrastructure.csproj" />
+	  <Content Update="appsettings.Development.json">
+	    <DependentUpon>appsettings.json</DependentUpon>
+	  </Content>
+	  <Content Update="appsettings.Secrets.json">
+	    <DependentUpon>appsettings.json</DependentUpon>
+	  </Content>
 	</ItemGroup>
 
 </Project>
