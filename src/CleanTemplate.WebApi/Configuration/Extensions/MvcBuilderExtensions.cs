@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace CleanTemplate.WebApi.Extensions;
+namespace CleanTemplate.WebApi.Configuration.Extensions;
 
 public static class MvcBuilderExtensions
 {

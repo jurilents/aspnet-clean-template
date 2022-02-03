@@ -1,8 +1,7 @@
 ﻿using CleanTemplate.Domain.Core.Tools;
-using CleanTemplate.WebApi.Configuration;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanTemplate.WebApi.Extensions;
+namespace CleanTemplate.WebApi.Configuration.Extensions;
 
 public static class ServiceCollectionExtensions
 {

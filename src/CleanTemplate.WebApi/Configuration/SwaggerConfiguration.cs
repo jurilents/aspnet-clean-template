@@ -1,4 +1,4 @@
-﻿using CleanTemplate.WebApi.Extensions;
+﻿using CleanTemplate.WebApi.Configuration.Extensions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;

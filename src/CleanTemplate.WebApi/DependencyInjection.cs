@@ -2,7 +2,7 @@
 using CleanTemplate.Data.SqlServer.DependencyInjection;
 using CleanTemplate.Infrastructure.DependencyInjection;
 using CleanTemplate.WebApi.Configuration;
-using CleanTemplate.WebApi.Extensions;
+using CleanTemplate.WebApi.Configuration.Extensions;
 
 namespace CleanTemplate.WebApi;
 

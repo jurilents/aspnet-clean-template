@@ -9,15 +9,15 @@ namespace CleanTemplate.Application.Features.Account;
 public class ConfirmEmailQuery : IRequest<bool>
 {
 	public long UserId { get; set; }
-	public string Token { get; set; } = default!;
+	public string Code { get; set; } = default!;
 }
 
-public class Handler : IRequestHandler<ConfirmEmailQuery, bool>
+public class ConfirmEmailQueryHandler : IRequestHandler<ConfirmEmailQuery, bool>
 {
 	private readonly UserManager<AppUser> _userManager;
 	private readonly IRepository<AppUser> _userRepository;
 
-	public Handler(UserManager<AppUser> userManager, IRepository<AppUser> userRepository)
+	public ConfirmEmailQueryHandler(UserManager<AppUser> userManager, IRepository<AppUser> userRepository)
 	{
 		_userManager = userManager;
 		_userRepository = userRepository;
@@ -29,7 +29,7 @@ public class Handler : IRequestHandler<ConfirmEmailQuery, bool>
 		if (user is null)
 			throw new NotFoundException();
 
-		var result = await _userManager.ConfirmEmailAsync(user, request.Token);
+		var result = await _userManager.ConfirmEmailAsync(user, request.Code.Trim());
 		return result.Succeeded;
 	}
 }

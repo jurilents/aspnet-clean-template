@@ -1,4 +1,4 @@
-﻿namespace CleanTemplate.WebApi.Extensions;
+﻿namespace CleanTemplate.WebApi.Configuration.Extensions;
 
 public static class WebApplicationExtensions
 {

@@ -1,4 +1,4 @@
-using CleanTemplate.WebApi.Extensions;
+using CleanTemplate.WebApi.Configuration.Extensions;
 
 namespace CleanTemplate.WebApi;
 

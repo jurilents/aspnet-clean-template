@@ -1,6 +1,4 @@
-﻿using CleanTemplate.WebApi.Configuration;
-
-namespace CleanTemplate.WebApi.Extensions;
+﻿namespace CleanTemplate.WebApi.Configuration.Extensions;
 
 public static class ConfigurationExtensions
 {

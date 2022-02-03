@@ -1,7 +1,7 @@
 ﻿using CleanTemplate.WebApi.Middleware;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace CleanTemplate.WebApi.Extensions;
+namespace CleanTemplate.WebApi.Configuration.Extensions;
 
 public static class ApplicationBuilderExtensions
 {
